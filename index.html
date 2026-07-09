@@ -3,215 +3,181 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index of /DuyKhanhOS-releases/</title>
+    <title>Index of /duykhanhos</title>
     <style>
         body {
-            font-family: 'Ubuntu Mono', 'Courier New', Courier, monospace;
-            background-color: #f7f7f7;
-            color: #333333;
-            padding: 20px 40px;
-            margin: 0;
+            font-family: sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+            padding: 20px;
         }
-
         h1 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #df382c; /* Màu đỏ cam đặc trưng của Ubuntu */
-            padding-bottom: 10px;
-            color: #111;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
         }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 1rem;
-        }
-
         th, td {
+            padding: 2px 10px;
             text-align: left;
-            padding: 8px;
+            white-space: nowrap;
         }
-
         th {
-            border-bottom: 1px solid #ccc;
-            font-weight: bold;
+            border-bottom: 1px solid #000;
         }
-
-        /* Độ rộng các cột */
-        th:nth-child(1), td:nth-child(1) { width: 45%; }
-        th:nth-child(2), td:nth-child(2) { width: 20%; }
-        th:nth-child(3), td:nth-child(3) { width: 15%; }
-        th:nth-child(4), td:nth-child(4) { width: 20%; }
-
-        tr:hover {
-            background-color: #eaeaea;
+        tr:first-child td {
+            padding-top: 5px;
         }
-
+        /* Cột số liệu căn phải theo chuẩn Apache */
+        td.size, td.date {
+            font-family: monospace;
+        }
+        td.size {
+            text-align: right;
+        }
         a {
-            color: #ae1857; /* Màu mận chín của Ubuntu */
+            color: #0000ee;
             text-decoration: none;
-            font-weight: bold;
         }
-
+        a:visited {
+            color: #551a8b;
+        }
         a:hover {
             text-decoration: underline;
         }
-
-        .btn-copy {
-            background-color: #aea79f;
-            color: white;
-            border: none;
-            padding: 3px 8px;
-            font-family: inherit;
-            font-size: 0.85rem;
+        hr {
+            border: 0;
+            border-top: 1px solid #000;
+            margin: 10px 0;
+        }
+        address {
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+        /* Nút copy nhỏ gọn không làm hỏng giao diện gốc */
+        .copy-btn {
+            font-family: monospace;
+            font-size: 0.75rem;
+            padding: 1px 4px;
             cursor: pointer;
-            border-radius: 3px;
-            transition: background 0.1s;
-        }
-
-        .btn-copy:hover {
-            background-color: #333333;
-        }
-
-        .btn-copy.copied {
-            background-color: #468847;
-        }
-
-        .badge {
-            font-size: 0.8rem;
-            font-weight: bold;
-            padding: 1px 5px;
-            border-radius: 3px;
             margin-left: 5px;
+            border: 1px solid #999;
+            background: #eee;
+            border-radius: 2px;
         }
-        .badge-beta { background-color: #f97316; color: white; }
-        .badge-eol { background-color: #df382c; color: white; }
-
-        footer {
-            margin-top: 30px;
-            border-top: 1px solid #ccc;
-            padding-top: 10px;
-            font-size: 0.85rem;
-            color: #666;
+        .copy-btn:active {
+            background: #ccc;
         }
     </style>
 </head>
 <body>
 
-    <h1>Index of /DuyKhanhOS-releases/</h1>
+    <h1>Index of /duykhanhos</h1>
 
     <table>
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Last modified</th>
-                <th>Size</th>
-                <th>Action</th>
+                <th><a href="#">Name</a></th>
+                <th><a href="#">Last modified</a></th>
+                <th><a href="#">Size</a></th>
+                <th>Description</th>
             </tr>
         </thead>
         <tbody>
+            <!-- Thư mục cha -->
+            <tr>
+                <td><a href="../">Parent Directory</a></td>
+                <td>&nbsp;</td>
+                <td class="size">-</td>
+                <td>&nbsp;</td>
+            </tr>
+
             <!-- Ver 6 Beta -->
             <tr>
                 <td>
                     <a href="https://github.com" target="_blank">DuyKhanhOS-v6.0-beta-source.tar.gz</a>
-                    <span class="badge badge-beta">beta</span>
+                    <button class="copy-btn" onclick="copyLink('https://github.com', this)">copy</button>
                 </td>
-                <td>2026-07-09 15:30</td>
-                <td>124M</td>
-                <td>
-                    <button class="btn-copy" onclick="copyToClipboard('https://github.com', this)">Copy Link</button>
-                </td>
+                <td class="date">2026-07-09 15:30</td>
+                <td class="size">124M</td>
+                <td>Beta version (Source only)</td>
             </tr>
 
             <!-- Ver 5 -->
             <tr>
                 <td>
                     <a href="https://github.com" target="_blank">DuyKhanhOS-v5.0-desktop-amd64.iso</a>
+                    <button class="copy-btn" onclick="copyLink('https://github.com', this)">copy</button>
                 </td>
-                <td>2025-12-20 11:15</td>
-                <td>2.4G</td>
-                <td>
-                    <button class="btn-copy" onclick="copyToClipboard('https://github.com', this)">Copy Link</button>
-                </td>
+                <td class="date">2025-12-20 11:15</td>
+                <td class="size">2.4G</td>
+                <td>Latest Stable Release</td>
             </tr>
 
             <!-- Ver 4 EOL -->
             <tr>
                 <td>
-                    <a href="#" style="color: #777; pointer-events: none;">DuyKhanhOS-v4.2-desktop-amd64.iso</a>
-                    <span class="badge badge-eol">EOL</span>
+                    <span style="color: #555;">DuyKhanhOS-v4.2-desktop-amd64.iso</span>
+                    <button class="copy-btn" onclick="copyLink('End of Life - No Link', this)">copy</button>
                 </td>
-                <td>2024-05-14 09:00</td>
-                <td>2.1G</td>
-                <td>
-                    <button class="btn-copy" onclick="copyToClipboard('End of Life - No Link', this)">Copy Link</button>
-                </td>
+                <td class="date">2024-05-14 09:00</td>
+                <td class="size">2.1G</td>
+                <td>[End of Life]</td>
             </tr>
 
             <!-- Ver 3 EOL -->
             <tr>
                 <td>
-                    <a href="#" style="color: #777; pointer-events: none;">DuyKhanhOS-v3.0-desktop-i386.iso</a>
-                    <span class="badge badge-eol">EOL</span>
+                    <span style="color: #555;">DuyKhanhOS-v3.0-desktop-i386.iso</span>
+                    <button class="copy-btn" onclick="copyLink('End of Life - No Link', this)">copy</button>
                 </td>
-                <td>2023-11-02 18:45</td>
-                <td>1.8G</td>
-                <td>
-                    <button class="btn-copy" onclick="copyToClipboard('End of Life - No Link', this)">Copy Link</button>
-                </td>
+                <td class="date">2023-11-02 18:45</td>
+                <td class="size">1.8G</td>
+                <td>[End of Life]</td>
             </tr>
 
             <!-- Ver 2 EOL -->
             <tr>
                 <td>
-                    <a href="#" style="color: #777; pointer-events: none;">DuyKhanhOS-v2.0-desktop-i386.iso</a>
-                    <span class="badge badge-eol">EOL</span>
+                    <span style="color: #555;">DuyKhanhOS-v2.0-desktop-i386.iso</span>
+                    <button class="copy-btn" onclick="copyLink('End of Life - No Link', this)">copy</button>
                 </td>
-                <td>2023-04-10 14:20</td>
-                <td>1.5G</td>
-                <td>
-                    <button class="btn-copy" onclick="copyToClipboard('End of Life - No Link', this)">Copy Link</button>
-                </td>
+                <td class="date">2023-04-10 14:20</td>
+                <td class="size">1.5G</td>
+                <td>[End of Life]</td>
             </tr>
 
             <!-- Ver 1 EOL -->
             <tr>
                 <td>
-                    <a href="#" style="color: #777; pointer-events: none;">DuyKhanhOS-v1.0-minimal.iso</a>
-                    <span class="badge badge-eol">EOL</span>
+                    <span style="color: #555;">DuyKhanhOS-v1.0-minimal.iso</span>
+                    <button class="copy-btn" onclick="copyLink('End of Life - No Link', this)">copy</button>
                 </td>
-                <td>2022-09-05 08:30</td>
-                <td>720M</td>
-                <td>
-                    <button class="btn-copy" onclick="copyToClipboard('End of Life - No Link', this)">Copy Link</button>
-                </td>
+                <td class="date">2022-09-05 08:30</td>
+                <td class="size">720M</td>
+                <td>[End of Life]</td>
             </tr>
         </tbody>
     </table>
 
-    <footer>
-        Vercel/2.0.0 Server at duykhanhos.vercel.app Port 443
-    </footer>
+    <hr>
+    <address>Apache/2.4.41 (Ubuntu) Server at archive.ubuntu.com Port 80</address>
 
     <script>
-        function copyToClipboard(text, button) {
-            // Tạo thẻ input tạm thời để copy
-            const tempInput = document.createElement("input");
-            tempInput.value = text;
-            document.body.appendChild(tempInput);
-            tempInput.select();
-            document.execCommand("copy");
-            document.body.removeChild(tempInput);
+        function copyLink(text, btn) {
+            const el = document.createElement('textarea');
+            el.value = text;
+            document.body.appendChild(el);
+            el.select();
+            document.execCommand('copy');
+            document.body.removeChild(el);
 
-            // Đổi hiệu ứng nút sau khi copy thành công
-            const originalText = button.innerText;
-            button.innerText = "Copied!";
-            button.classList.add("copied");
-            
+            // Đổi chữ tạm thời để báo hiệu đã copy
+            const originalText = btn.innerText;
+            btn.innerText = 'copied';
+            btn.style.background = '#bcffb8';
             setTimeout(() => {
-                button.innerText = originalText;
-                button.classList.remove("copied");
-            }, 1500);
+                btn.innerText = originalText;
+                btn.style.background = '#eee';
+            }, 1000);
         }
     </script>
 
