@@ -3,237 +3,217 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DuyKhanhOS Archive</title>
+    <title>Index of /DuyKhanhOS-releases/</title>
     <style>
-        :root {
-            --bg-color: #0f172a;
-            --card-bg: #1e293b;
-            --text-color: #f8fafc;
-            --accent-color: #38bdf8;
-            --text-muted: #94a3b8;
-            --beta-color: #f97316;
-            --eol-color: #ef4444; /* Màu đỏ cho End of Life */
-        }
-
         body {
-            font-family: system-ui, -apple-system, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            font-family: 'Ubuntu Mono', 'Courier New', Courier, monospace;
+            background-color: #f7f7f7;
+            color: #333333;
+            padding: 20px 40px;
             margin: 0;
-            padding: 40px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 40px;
         }
 
         h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            color: var(--text-color);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #df382c; /* Màu đỏ cam đặc trưng của Ubuntu */
+            padding-bottom: 10px;
+            color: #111;
         }
 
-        .subtitle {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-        }
-
-        .archive-container {
+        table {
             width: 100%;
-            max-width: 600px;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
+            border-collapse: collapse;
+            font-size: 1rem;
         }
 
-        .version-card {
-            background-color: var(--card-bg);
-            padding: 20px;
-            border-radius: 12px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            border-bottom: 1px solid #ccc;
+            font-weight: bold;
+        }
+
+        /* Độ rộng các cột */
+        th:nth-child(1), td:nth-child(1) { width: 45%; }
+        th:nth-child(2), td:nth-child(2) { width: 20%; }
+        th:nth-child(3), td:nth-child(3) { width: 15%; }
+        th:nth-child(4), td:nth-child(4) { width: 20%; }
+
+        tr:hover {
+            background-color: #eaeaea;
+        }
+
+        a {
+            color: #ae1857; /* Màu mận chín của Ubuntu */
             text-decoration: none;
-            color: inherit;
-            border: 1px solid transparent;
-            transition: all 0.2s ease-in-out;
+            font-weight: bold;
         }
 
-        /* Hiệu ứng hover cho các bản còn hoạt động */
-        .version-card:not(.disabled-card):hover {
-            border-color: var(--accent-color);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 20px rgba(56, 189, 248, 0.1);
+        a:hover {
+            text-decoration: underline;
         }
 
-        .version-card.beta-card:hover {
-            border-color: var(--beta-color);
-            box-shadow: 0 4px 20px rgba(249, 115, 22, 0.15);
+        .btn-copy {
+            background-color: #aea79f;
+            color: white;
+            border: none;
+            padding: 3px 8px;
+            font-family: inherit;
+            font-size: 0.85rem;
+            cursor: pointer;
+            border-radius: 3px;
+            transition: background 0.1s;
         }
 
-        /* Giao diện cho các bản đã khai tử (EOL) */
-        .version-card.disabled-card {
-            opacity: 0.6;
-            cursor: not-allowed;
+        .btn-copy:hover {
+            background-color: #333333;
         }
 
-        .version-info {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .version-title-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 6px;
-        }
-
-        .version-info h2 {
-            margin: 0;
-            font-size: 1.3rem;
-            color: var(--text-color);
+        .btn-copy.copied {
+            background-color: #468847;
         }
 
         .badge {
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
+            font-size: 0.8rem;
+            font-weight: bold;
+            padding: 1px 5px;
+            border-radius: 3px;
+            margin-left: 5px;
         }
+        .badge-beta { background-color: #f97316; color: white; }
+        .badge-eol { background-color: #df382c; color: white; }
 
-        .badge.beta {
-            background-color: rgba(249, 115, 22, 0.2);
-            color: var(--beta-color);
-        }
-
-        .badge.eol {
-            background-color: rgba(239, 68, 68, 0.15);
-            color: var(--eol-color);
-        }
-
-        .version-info p {
-            margin: 0;
-            font-size: 0.9rem;
-            color: var(--text-muted);
-        }
-
-        .download-btn {
-            background-color: rgba(56, 189, 248, 0.1);
-            color: var(--accent-color);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            transition: background 0.2s;
-        }
-
-        .version-card:not(.disabled-card):hover .download-btn {
-            background-color: var(--accent-color);
-            color: var(--bg-color);
-        }
-
-        .beta-card .download-btn {
-            background-color: rgba(249, 115, 22, 0.1);
-            color: var(--beta-color);
-        }
-
-        .beta-card:hover .download-btn {
-            background-color: var(--beta-color);
-            color: var(--bg-color);
-        }
-
-        /* Nút trạng thái EOL */
-        .disabled-card .download-btn {
-            background-color: rgba(255, 255, 255, 0.05);
-            color: var(--text-muted);
+        footer {
+            margin-top: 30px;
+            border-top: 1px solid #ccc;
+            padding-top: 10px;
+            font-size: 0.85rem;
+            color: #666;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>DuyKhanhOS Archive</h1>
-        <p class="subtitle">Kho lưu trữ các phiên bản hệ điều hành DuyKhanhOS</p>
-    </header>
+    <h1>Index of /DuyKhanhOS-releases/</h1>
 
-    <main class="archive-container">
-        <!-- DuyKhanhOS Ver 6 Beta -->
-        <a href="https://github.com/InfiniteMagazine228/DuyKhanhOS-Versions-6/releases" target="_blank" class="version-card beta-card">
-            <div class="version-info">
-                <div class="version-title-wrapper">
-                    <h2>DuyKhanhOS Ver 6</h2>
-                    <span class="badge beta">Beta</span>
-                </div>
-                <p>Mã nguồn thử nghiệm • Không có file ISO</p>
-            </div>
-            <span class="download-btn">Xem Code</span>
-        </a>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Last modified</th>
+                <th>Size</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Ver 6 Beta -->
+            <tr>
+                <td>
+                    <a href="https://github.com" target="_blank">DuyKhanhOS-v6.0-beta-source.tar.gz</a>
+                    <span class="badge badge-beta">beta</span>
+                </td>
+                <td>2026-07-09 15:30</td>
+                <td>124M</td>
+                <td>
+                    <button class="btn-copy" onclick="copyToClipboard('https://github.com', this)">Copy Link</button>
+                </td>
+            </tr>
 
-        <!-- DuyKhanhOS Ver 5 -->
-        <a href="https://github.com/InfiniteMagazine228/DuyKhanhOS-Version-5/releases" target="_blank" class="version-card">
-            <div class="version-info">
-                <div class="version-title-wrapper">
-                    <h2>DuyKhanhOS Ver 5</h2>
-                </div>
-                <p>Phiên bản chính thức mới nhất • Đã tối ưu hóa</p>
-            </div>
-            <span class="download-btn">Tải về</span>
-        </a>
+            <!-- Ver 5 -->
+            <tr>
+                <td>
+                    <a href="https://github.com" target="_blank">DuyKhanhOS-v5.0-desktop-amd64.iso</a>
+                </td>
+                <td>2025-12-20 11:15</td>
+                <td>2.4G</td>
+                <td>
+                    <button class="btn-copy" onclick="copyToClipboard('https://github.com', this)">Copy Link</button>
+                </td>
+            </tr>
 
-        <!-- DuyKhanhOS Ver 4 (EOL) -->
-        <a href="javascript:void(0)" class="version-card disabled-card">
-            <div class="version-info">
-                <div class="version-title-wrapper">
-                    <h2>DuyKhanhOS Ver 4</h2>
-                    <span class="badge eol">End of Life</span>
-                </div>
-                <p>Bản cập nhật cũ • Đã ngừng hỗ trợ</p>
-            </div>
-            <span class="download-btn">Đóng</span>
-        </a>
+            <!-- Ver 4 EOL -->
+            <tr>
+                <td>
+                    <a href="#" style="color: #777; pointer-events: none;">DuyKhanhOS-v4.2-desktop-amd64.iso</a>
+                    <span class="badge badge-eol">EOL</span>
+                </td>
+                <td>2024-05-14 09:00</td>
+                <td>2.1G</td>
+                <td>
+                    <button class="btn-copy" onclick="copyToClipboard('End of Life - No Link', this)">Copy Link</button>
+                </td>
+            </tr>
 
-        <!-- DuyKhanhOS Ver 3 (EOL) -->
-        <a href="javascript:void(0)" class="version-card disabled-card">
-            <div class="version-info">
-                <div class="version-title-wrapper">
-                    <h2>DuyKhanhOS Ver 3</h2>
-                    <span class="badge eol">End of Life</span>
-                </div>
-                <p>Bản cập nhật cũ • Đã ngừng hỗ trợ</p>
-            </div>
-            <span class="download-btn">Đóng</span>
-        </a>
+            <!-- Ver 3 EOL -->
+            <tr>
+                <td>
+                    <a href="#" style="color: #777; pointer-events: none;">DuyKhanhOS-v3.0-desktop-i386.iso</a>
+                    <span class="badge badge-eol">EOL</span>
+                </td>
+                <td>2023-11-02 18:45</td>
+                <td>1.8G</td>
+                <td>
+                    <button class="btn-copy" onclick="copyToClipboard('End of Life - No Link', this)">Copy Link</button>
+                </td>
+            </tr>
 
-        <!-- DuyKhanhOS Ver 2 (EOL) -->
-        <a href="javascript:void(0)" class="version-card disabled-card">
-            <div class="version-info">
-                <div class="version-title-wrapper">
-                    <h2>DuyKhanhOS Ver 2</h2>
-                    <span class="badge eol">End of Life</span>
-                </div>
-                <p>Bản cải tiến cũ • Đã ngừng hỗ trợ</p>
-            </div>
-            <span class="download-btn">Đóng</span>
-        </a>
+            <!-- Ver 2 EOL -->
+            <tr>
+                <td>
+                    <a href="#" style="color: #777; pointer-events: none;">DuyKhanhOS-v2.0-desktop-i386.iso</a>
+                    <span class="badge badge-eol">EOL</span>
+                </td>
+                <td>2023-04-10 14:20</td>
+                <td>1.5G</td>
+                <td>
+                    <button class="btn-copy" onclick="copyToClipboard('End of Life - No Link', this)">Copy Link</button>
+                </td>
+            </tr>
 
-        <!-- DuyKhanhOS Ver 1 (EOL) -->
-        <a href="javascript:void(0)" class="version-card disabled-card">
-            <div class="version-info">
-                <div class="version-title-wrapper">
-                    <h2>DuyKhanhOS Ver 1</h2>
-                    <span class="badge eol">End of Life</span>
-                </div>
-                <p>Phiên bản sơ khai • Đã ngừng hỗ trợ</p>
-            </div>
-            <span class="download-btn">Đóng</span>
-        </a>
-    </main>
+            <!-- Ver 1 EOL -->
+            <tr>
+                <td>
+                    <a href="#" style="color: #777; pointer-events: none;">DuyKhanhOS-v1.0-minimal.iso</a>
+                    <span class="badge badge-eol">EOL</span>
+                </td>
+                <td>2022-09-05 08:30</td>
+                <td>720M</td>
+                <td>
+                    <button class="btn-copy" onclick="copyToClipboard('End of Life - No Link', this)">Copy Link</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <footer>
+        Vercel/2.0.0 Server at duykhanhos.vercel.app Port 443
+    </footer>
+
+    <script>
+        function copyToClipboard(text, button) {
+            // Tạo thẻ input tạm thời để copy
+            const tempInput = document.createElement("input");
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+
+            // Đổi hiệu ứng nút sau khi copy thành công
+            const originalText = button.innerText;
+            button.innerText = "Copied!";
+            button.classList.add("copied");
+            
+            setTimeout(() => {
+                button.innerText = originalText;
+                button.classList.remove("copied");
+            }, 1500);
+        }
+    </script>
 
 </body>
 </html>
