@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index of /duykhanhos</title>
+    <title>Index of /DuyKhanhOS</title>
     <style>
         body {
             font-family: sans-serif;
@@ -13,7 +13,13 @@
         }
         h1 {
             font-size: 1.5rem;
+            margin-top: 0;
             margin-bottom: 10px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 900px;
         }
         th, td {
             padding: 2px 10px;
@@ -21,14 +27,17 @@
             white-space: nowrap;
         }
         th {
-            border-bottom: 1px solid #000;
+            border-bottom: 1px solid #000000;
+            font-family: sans-serif;
+            font-size: 0.95rem;
         }
         tr:first-child td {
             padding-top: 5px;
         }
-        /* Cột số liệu căn phải theo chuẩn Apache */
-        td.size, td.date {
+        /* Định dạng font chữ và căn lề cột số liệu theo chuẩn Apache */
+        td.date, td.size {
             font-family: monospace;
+            font-size: 0.9rem;
         }
         td.size {
             text-align: right;
@@ -45,26 +54,30 @@
         }
         hr {
             border: 0;
-            border-top: 1px solid #000;
+            border-top: 1px solid #000000;
             margin: 10px 0;
+            max-width: 900px;
         }
         address {
             font-size: 0.9rem;
             font-style: italic;
+            font-family: sans-serif;
         }
-        /* Nút copy nhỏ gọn không làm hỏng giao diện gốc */
+        /* Nút copy tối giản không làm vỡ cấu trúc dòng */
         .copy-btn {
             font-family: monospace;
             font-size: 0.75rem;
             padding: 1px 4px;
             cursor: pointer;
-            margin-left: 5px;
-            border: 1px solid #999;
-            background: #eee;
+            margin-left: 8px;
+            border: 1px solid #999999;
+            background: #eeeeee;
             border-radius: 2px;
+            color: #000000;
+            vertical-align: middle;
         }
         .copy-btn:active {
-            background: #ccc;
+            background: #cccccc;
         }
     </style>
 </head>
@@ -90,7 +103,7 @@
                 <td>&nbsp;</td>
             </tr>
 
-            <!-- Ver 6 Beta -->
+            <!-- DuyKhanhOS Ver 6 Beta -->
             <tr>
                 <td>
                     <a href="https://github.com" target="_blank">DuyKhanhOS-v6.0-beta-source.tar.gz</a>
@@ -101,7 +114,7 @@
                 <td>Beta version (Source only)</td>
             </tr>
 
-            <!-- Ver 5 -->
+            <!-- DuyKhanhOS Ver 5 -->
             <tr>
                 <td>
                     <a href="https://github.com" target="_blank">DuyKhanhOS-v5.0-desktop-amd64.iso</a>
@@ -112,10 +125,10 @@
                 <td>Latest Stable Release</td>
             </tr>
 
-            <!-- Ver 4 EOL -->
+            <!-- DuyKhanhOS Ver 4 EOL -->
             <tr>
                 <td>
-                    <span style="color: #555;">DuyKhanhOS-v4.2-desktop-amd64.iso</span>
+                    <span style="color: #555555;">DuyKhanhOS-v4.2-desktop-amd64.iso</span>
                     <button class="copy-btn" onclick="copyLink('End of Life - No Link', this)">copy</button>
                 </td>
                 <td class="date">2024-05-14 09:00</td>
@@ -123,10 +136,10 @@
                 <td>[End of Life]</td>
             </tr>
 
-            <!-- Ver 3 EOL -->
+            <!-- DuyKhanhOS Ver 3 EOL -->
             <tr>
                 <td>
-                    <span style="color: #555;">DuyKhanhOS-v3.0-desktop-i386.iso</span>
+                    <span style="color: #555555;">DuyKhanhOS-v3.0-desktop-i386.iso</span>
                     <button class="copy-btn" onclick="copyLink('End of Life - No Link', this)">copy</button>
                 </td>
                 <td class="date">2023-11-02 18:45</td>
@@ -134,10 +147,10 @@
                 <td>[End of Life]</td>
             </tr>
 
-            <!-- Ver 2 EOL -->
+            <!-- DuyKhanhOS Ver 2 EOL -->
             <tr>
                 <td>
-                    <span style="color: #555;">DuyKhanhOS-v2.0-desktop-i386.iso</span>
+                    <span style="color: #555555;">DuyKhanhOS-v2.0-desktop-i386.iso</span>
                     <button class="copy-btn" onclick="copyLink('End of Life - No Link', this)">copy</button>
                 </td>
                 <td class="date">2023-04-10 14:20</td>
@@ -145,10 +158,10 @@
                 <td>[End of Life]</td>
             </tr>
 
-            <!-- Ver 1 EOL -->
+            <!-- DuyKhanhOS Ver 1 EOL -->
             <tr>
                 <td>
-                    <span style="color: #555;">DuyKhanhOS-v1.0-minimal.iso</span>
+                    <span style="color: #555555;">DuyKhanhOS-v1.0-minimal.iso</span>
                     <button class="copy-btn" onclick="copyLink('End of Life - No Link', this)">copy</button>
                 </td>
                 <td class="date">2022-09-05 08:30</td>
@@ -159,10 +172,11 @@
     </table>
 
     <hr>
-    <address>Apache/2.4.41 (Ubuntu) Server at archive.ubuntu.com Port 80</address>
+    <address>Apache/2.4.41 (Ubuntu) Server at ://archive.ubuntu.com Port 80</address>
 
     <script>
         function copyLink(text, btn) {
+            // Tạo phần tử ẩn để thực hiện sao chép lệnh
             const el = document.createElement('textarea');
             el.value = text;
             document.body.appendChild(el);
@@ -170,13 +184,13 @@
             document.execCommand('copy');
             document.body.removeChild(el);
 
-            // Đổi chữ tạm thời để báo hiệu đã copy
+            // Phản hồi trực quan sau khi bấm nút copy
             const originalText = btn.innerText;
             btn.innerText = 'copied';
             btn.style.background = '#bcffb8';
             setTimeout(() => {
                 btn.innerText = originalText;
-                btn.style.background = '#eee';
+                btn.style.background = '#eeeeee';
             }, 1000);
         }
     </script>
