@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DuyKhanhOS Archive</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-color: #f8fafc;
+            --accent-color: #38bdf8;
+            --text-muted: #94a3b8;
+            --beta-color: #f97316; /* Màu cam cho bản Beta */
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: var(--text-color);
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .archive-container {
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .version-card {
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-decoration: none;
+            color: inherit;
+            border: 1px solid transparent;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .version-card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(56, 189, 248, 0.1);
+        }
+
+        /* Hiệu ứng viền riêng cho bản Beta khi hover */
+        .version-card.beta-card:hover {
+            border-color: var(--beta-color);
+            box-shadow: 0 4px 20px rgba(249, 115, 22, 0.15);
+        }
+
+        .version-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .version-title-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 6px;
+        }
+
+        .version-info h2 {
+            margin: 0;
+            font-size: 1.3rem;
+            color: var(--text-color);
+        }
+
+        .badge {
+            background-color: rgba(249, 115, 22, 0.2);
+            color: var(--beta-color);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .version-info p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .download-btn {
+            background-color: rgba(56, 189, 248, 0.1);
+            color: var(--accent-color);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .version-card:hover .download-btn {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+        }
+
+        /* Nút tải riêng cho bản Beta */
+        .beta-card .download-btn {
+            background-color: rgba(249, 115, 22, 0.1);
+            color: var(--beta-color);
+        }
+
+        .beta-card:hover .download-btn {
+            background-color: var(--beta-color);
+            color: var(--bg-color);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>DuyKhanhOS Archive</h1>
+        <p class="subtitle">Kho lưu trữ các phiên bản hệ điều hành DuyKhanhOS</p>
+    </header>
+
+    <main class="archive-container">
+        <!-- Thay ký tự # bằng link tải thực tế của bạn sau này -->
+        <a href="#" class="version-card beta-card">
+            <div class="version-info">
+                <div class="version-title-wrapper">
+                    <h2>DuyKhanhOS Ver 6</h2>
+                    <span class="badge">Beta</span>
+                </div>
+                <p>Phiên bản thử nghiệm • Trải nghiệm tính năng mới</p>
+            </div>
+            <span class="download-btn">Tải về</span>
+        </a>
+
+        <a href="#" class="version-card">
+            <div class="version-info">
+                <div class="version-title-wrapper">
+                    <h2>DuyKhanhOS Ver 5</h2>
+                </div>
+                <p>Phiên bản chính thức mới nhất • Đã tối ưu hóa</p>
+            </div>
+            <span class="download-btn">Tải về</span>
+        </a>
+
+        <a href="#" class="version-card">
+            <div class="version-info">
+                <div class="version-title-wrapper">
+                    <h2>DuyKhanhOS Ver 4</h2>
+                </div>
+                <p>Bản cập nhật lớn • Sửa lỗi hệ thống</p>
+            </div>
+            <span class="download-btn">Tải về</span>
+        </a>
+
+        <a href="#" class="version-card">
+            <div class="version-info">
+                <div class="version-title-wrapper">
+                    <h2>DuyKhanhOS Ver 3</h2>
+                </div>
+                <p>Bổ sung tính năng mới • Ổn định</p>
+            </div>
+            <span class="download-btn">Tải về</span>
+        </a>
+
+        <a href="#" class="version-card">
+            <div class="version-info">
+                <div class="version-title-wrapper">
+                    <h2>DuyKhanhOS Ver 2</h2>
+                </div>
+                <p>Bản cải tiến hiệu năng đầu tiên</p>
+            </div>
+            <span class="download-btn">Tải về</span>
+        </a>
+
+        <a href="#" class="version-card">
+            <div class="version-info">
+                <div class="version-title-wrapper">
+                    <h2>DuyKhanhOS Ver 1</h2>
+                </div>
+                <p>Phiên bản sơ khai • Bản dựng đầu tiên</p>
+            </div>
+            <span class="download-btn">Tải về</span>
+        </a>
+    </main>
+
+</body>
+</html>
